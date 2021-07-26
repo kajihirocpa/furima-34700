@@ -27,7 +27,6 @@
 | price                 | integer       | null: false                   |
 | deliv_fee_burden_id   | integer       | null: false                   |
 | item_description      | text          | null: false                   |
-| seller_name           | string        | null: false                   |
 | category_id           | integer       | null: false                   |
 | status_id             | integer       | null: false                   |
 | shipping_area_id      | integer       | null: false                   |
