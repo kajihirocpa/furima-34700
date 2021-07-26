@@ -1,24 +1,78 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| column               | type   | Options     |
+| -------------------- | ------ | ----------- |
+| name                 | string | null: false |
+| email                | string | null: false |
+| encrypted_password   | string | null: false |
+| first_name           | string | null: false |
+| family_name          | string | null: false |
+| read_first           | string | null: false |
+| read_family          | string | null: false |
+| birth_day            | date   | null: false |
 
-* Ruby version
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :items
+- has_many :orders
 
-* Database creation
+## itemsテーブル
 
-* Database initialization
+| column                | type          | Options                       |
+| --------------------- | ------------- | ----------------------------- |
+| item_name             | string        | null: false                   |
+| image                 | ActiveStorage | null: false                   |
+| price                 | numeric       | null: false                   |
+| deliv_fee_burden_id   | integer       | null: false                   |
+| item_description      | text          | null: false                   |
+| seller_name           | string        | null: false                   |
+| category_id           | integer       | null: false                   |
+| status_id             | integer       | null: false                   |
+| shipping_area_id      | integer       | null: false                   |
+| deliv_averagetime_id  | integer       | null: false                   |
+| user_id               | references    | null: false foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belong_to :user
+- has_one   :order
+- belong_to_active_hash :deliv_fee_burden_id
+- belong_to_active_hash :category_id
+- belong_to_active_hash :status_id
+- belong_to_active_hash :shipping_area_id
+- belong_to_active_hash :deliv_averagetime_id
 
-* Deployment instructions
+## Ordersテーブル
 
-* ...
+| column       | type          | Options                       |
+| ------------ | ------------- | ----------------------------- |
+| card_number  | integer       | null: false                   |
+| cvc          | integer       | null: false                   |
+| exp_month    | integer       | null: false                   |
+| user_id      | references    | null: false foreign_key: true |
+| item_id      | references    | null: false foreign_key: true |
+
+### Association
+
+- belong_to :user
+- belong_to :item
+- has_one :deliv_addresses
+
+## deliv_addressesテーブル
+
+| column          | type          | Options                       |
+| --------------- | ------------- | ----------------------------- |
+| postal_code     | string        | null: false                   |
+| prefecture_id   | integer       | null: false                   |
+| city            | string        | null: false                   |
+| building_name   | string        |                               |
+| phone_number    | string        | null: false                   |
+| order_id        | references    | null: false foreign_key: true |
+
+### Association
+
+- belong_to: order
+- belong_to_active_hash :prefecture_id
