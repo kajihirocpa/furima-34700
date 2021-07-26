@@ -23,8 +23,7 @@
 
 | column                | type          | Options                       |
 | --------------------- | ------------- | ----------------------------- |
-| item_name             | string        | null: false                   |
-| image                 | ActiveStorage | null: false                   |
+| name                  | string        | null: false                   |
 | price                 | integer       | null: false                   |
 | deliv_fee_burden_id   | integer       | null: false                   |
 | item_description      | text          | null: false                   |
@@ -33,7 +32,7 @@
 | status_id             | integer       | null: false                   |
 | shipping_area_id      | integer       | null: false                   |
 | deliv_averagetime_id  | integer       | null: false                   |
-| user_id               | references    | null: false foreign_key: true |
+| user                  | references    | null: false foreign_key: true |
 
 ### Association
 
@@ -47,10 +46,10 @@
 
 ## Ordersテーブル
 
-| column       | type          | Options                       |
-| ------------ | ------------- | ----------------------------- |
-| user_id      | references    | null: false foreign_key: true |
-| item_id      | references    | null: false foreign_key: true |
+| column    | type          | Options                       |
+| --------- | ------------- | ----------------------------- |
+| user      | references    | null: false foreign_key: true |
+| item      | references    | null: false foreign_key: true |
 
 ### Association
 
@@ -68,7 +67,7 @@
 | address         | string        | null: false                   |
 | building_name   | string        |                               |
 | phone_number    | string        | null: false                   |
-| order_id        | references    | null: false foreign_key: true |
+| order           | references    | null: false foreign_key: true |
 
 ### Association
 
