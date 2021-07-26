@@ -2,16 +2,16 @@
 
 ## usersテーブル
 
-| column               | type   | Options     |
-| -------------------- | ------ | ----------- |
-| name                 | string | null: false |
-| email                | string | null: false |
-| encrypted_password   | string | null: false |
-| first_name           | string | null: false |
-| family_name          | string | null: false |
-| read_first           | string | null: false |
-| read_family          | string | null: false |
-| birth_day            | date   | null: false |
+| column               | type   | Options                   |
+| -------------------- | ------ | ------------------------- |
+| name                 | string | null: false               |
+| email                | string | null: false unique: true  |
+| encrypted_password   | string | null: false               |
+| first_name           | string | null: false               |
+| family_name          | string | null: false               |
+| read_first           | string | null: false               |
+| read_family          | string | null: false               |
+| birth_day            | date   | null: false               |
 
 
 ### Association
@@ -25,7 +25,7 @@
 | --------------------- | ------------- | ----------------------------- |
 | item_name             | string        | null: false                   |
 | image                 | ActiveStorage | null: false                   |
-| price                 | numeric       | null: false                   |
+| price                 | integer       | null: false                   |
 | deliv_fee_burden_id   | integer       | null: false                   |
 | item_description      | text          | null: false                   |
 | seller_name           | string        | null: false                   |
@@ -49,9 +49,6 @@
 
 | column       | type          | Options                       |
 | ------------ | ------------- | ----------------------------- |
-| card_number  | integer       | null: false                   |
-| cvc          | integer       | null: false                   |
-| exp_month    | integer       | null: false                   |
 | user_id      | references    | null: false foreign_key: true |
 | item_id      | references    | null: false foreign_key: true |
 
@@ -68,6 +65,7 @@
 | postal_code     | string        | null: false                   |
 | prefecture_id   | integer       | null: false                   |
 | city            | string        | null: false                   |
+| address         | string        | null: false                   |
 | building_name   | string        |                               |
 | phone_number    | string        | null: false                   |
 | order_id        | references    | null: false foreign_key: true |
