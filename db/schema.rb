@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_011925) do
+ActiveRecord::Schema.define(version: 2021_07_31_011808) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_011925) do
     t.string "family_name", default: "", null: false
     t.string "read_first", default: "", null: false
     t.string "read_family", default: "", null: false
-    t.string "birth_day", default: "", null: false
+    t.date "birth_day", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
